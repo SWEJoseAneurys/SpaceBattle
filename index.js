@@ -94,6 +94,10 @@ const battle =() => {
 
     //ussHelloWorld attacks enemy ships while hull is greater than 0
     for (i=0; i < enemies.length; i++) {
+        let currentHull = ussHelloWorld.hull;
+        let enemyHull = enemies[i].hull;
+        document.getElementById("my-ship-hull").innerHTML = currentHull;
+        document.getElementById("alien-ship-hull").innerHTML = enemyHull;
         console.log(`${ussHelloWorld.name} VS. ${enemies[i].name}, Hull: ${enemies[i].hull}`);
         console.log("");
         //while looping, if my ship ever reaches 0 game is over
@@ -106,6 +110,8 @@ const battle =() => {
         while (ussHelloWorld.hull > 0) {
             //attack!
             ussHelloWorld.shotsFired(enemies[i]);
+            let enemyHull = enemies[i].hull;
+            document.getElementById("alien-ship-hull").innerHTML = enemyHull;
             //check damage to enemy, if enemy ship < 0 then the game is over
             if (enemies[i].hull <= 0) {
                 //image reflects enemy ship defeated
@@ -114,10 +120,12 @@ const battle =() => {
                 console.log(`You've defeated the enemy!`);
                 console.log(`ussHelloWorld current hull: ${ussHelloWorld.hull}`);
                 console.log("");
-                // let response = window.prompt(`You've won! Current Hull:${currentHull} Would you like to continue?`)
-                // console.log(response);
-                // if (response.toLowerCase != "yes" ) {
-                //     console.log("Thanks for playing. Goodbye!")
+                let response = window.prompt(`You've won! Current Hull:${currentHull} Would you like to continue?`)
+                console.log(response);
+                if (response.toLowerCase = "no") {
+                    window.alert("Thanks for playing. Goodbye!");
+                    break;
+                };
                 break;
             //else, battle continues and enemy gets to attack my ship
             } else {
