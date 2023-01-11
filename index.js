@@ -1,36 +1,3 @@
-// let myShip = document.getElementById(`my-ship`);
-
-// myShip.addEventListener(`click`, () => {
-//     let shipHullElement = document.getElementById(`my-ship-hull`);
-//     //we pretend the enemy ship attacks
-//     let currentHullHTML = +shipHullElement.innerText;
-//     console.log(typeof +currentHullHTML);
-//     //enemy ship hit for 3 damage
-
-//     let enemyDamage = 3;
-
-//     let finalHull = currentHullHTML - enemyDamage;
-
-//     shipHullElement.innerText = finalHull
-// })
-
-// let alienShip1 = document.getElementById(`alien-ship1`);
-
-// alienShip1.addEventListener(`click`, () => {
-//     let alienship1HullElement = document.getElementById(`alien-ship1-hull`);
-//     //we pretend the enemy ship attacks
-//     let currentHullHTML = +alienship1HullElement.innerText;
-//     console.log(typeof +currentHullHTML);
-//     //enemy ship hit for 3 damage
-
-//     let enemyDamage = 3;
-
-//     let finalHull = currentHullHTML - enemyDamage;
-
-//     alienship1HullElement.innerText = finalHull
-// })
-
-
 //create spaceship class
 class Spaceship {
     constructor (name, hull, firepower, accuracy) {
@@ -94,9 +61,9 @@ const battle =() => {
 
     //ussHelloWorld attacks enemy ships while hull is greater than 0
     for (i=0; i < enemies.length; i++) {
-        let currentHull = ussHelloWorld.hull;
+        let USSHull = ussHelloWorld.hull;
         let enemyHull = enemies[i].hull;
-        document.getElementById("my-ship-hull").innerHTML = currentHull;
+        document.getElementById("my-ship-hull").innerHTML = USSHull;
         document.getElementById("alien-ship-hull").innerHTML = enemyHull;
         console.log(`${ussHelloWorld.name} VS. ${enemies[i].name}, Hull: ${enemies[i].hull}`);
         console.log("");
@@ -120,11 +87,11 @@ const battle =() => {
                 console.log(`You've defeated the enemy!`);
                 console.log(`ussHelloWorld current hull: ${ussHelloWorld.hull}`);
                 console.log("");
-                let response = window.prompt(`You've won! Current Hull:${currentHull} Would you like to continue?`)
+                let response = window.prompt(`You've won! Current Hull:${USSHull} Would you like to continue?`)
                 console.log(response);
-                if (response.toLowerCase = "no") {
+                if (response.toLowerCase() == "no") {
                     window.alert("Thanks for playing. Goodbye!");
-                    break;
+                    return;
                 };
                 break;
             //else, battle continues and enemy gets to attack my ship
